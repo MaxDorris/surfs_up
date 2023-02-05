@@ -36,7 +36,7 @@ For this task I repeated the steps from D2, only I changed the filtering month t
 - The December temperature data ranges from 56˚F to 83˚F, has a mean of 71.04˚F, and has a standard deviation of 3.75˚F.
 
 ### Conclusion
-It appears as though June is the better month to open based on temperature data alone. I personally prefer surfing in hotter weather, and I elieve this is the majority-held preference. I also prefer to surf when there is zero chance of being struck by lightning. Assuming that this preference is also held by a majority of surfers and that lightning has a greater chance of striking when it rains, I'll make two other queries that focus on precipitation data for these months to see if the choice in opening month is still obvious.
+It appears as though June is the better month to open based on temperature data alone. I personally prefer surfing in hotter weather, and I believe this is the majority-held preference. I also prefer to surf when there is zero chance of being struck by lightning. Assuming that this preference is also held by a majority of surfers and that lightning has a greater chance of striking when it rains, I'll make two other queries that focus on precipitation data for these months to see if the choice in opening month is still obvious.
 
 <p align="center">
   <img width=auto height="500" src=images/June_prcp_summary.png>
