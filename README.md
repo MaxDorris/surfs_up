@@ -1,49 +1,39 @@
-# surfs_up (Analysis)
-Intro to SQLite, SQLalchemy, and Flask
+# A Surf-Focused Weather Analysis
 
 ## Overview
 ### Purpose and Background
-This served as an introductory example analysis for using SQLite and SQLalchemy in real practice. My task was to find the best month to open a surf shop in Hawaii. By analyzing historic temperature data from nine active weather stations in the area, a statistically "safer" decision was made possible for the business owner.
+This served as an introductory example for using SQLite and SQLalchemy to process real data and perform practical analyses. My task was to find the best month to open a surf shop in Hawaii. By analyzing historic temperature data from nine active weather stations in the area, a statistically-fortified decision was made possible for the business owner. For this mini-project, the task was simiplified to detmermining the better month out of June and December to open the shop.
 
 ### Method and Results
-A SQLite database consisting of two tables already existed. The *'measurement'* table contained the columns: id, station, date, prcp, and tobs. These abbreviations describe columns for **row index**, **station id** where row data was collected, **date** on which row data was collected, **precipitation data* in inches, and **observed temperature** data in Farenheit. The *'station'* table contained the columns: id, station, name, latitude, longitude, and elevation. The names of each station used in this analysis are listed below:
+In the starter-file, hawaii.sqlite, the *'measurement'* table contained the columns: id, station, date, prcp, and tobs. These abbreviations describe columns for **row index**, **station id** where row data was collected, **date** on which row data was collected, **precipitation data* in inches**, and **observed temperature** data in Farenheit. The *'station'* table contained the columns: id, station, name, latitude, longitude, and elevation. The names of each station used in this analysis are listed below:
 
 <p align="center">
   <img width=auto height="500" src=images/station_names.png>
   </p>
 
-#### Deliverable 1: Number of Retiring Employees by Title
+I started by creating a SQLite database engine to store the hawaii.sqlite database. I then reflected the engine onto an automapped SQLite "schema" to store the relationships and classes of the database. Then I created two table references, "Measurement" and "Station". I then created a session object to make changes to these tables using SQL-like or class-based queries.
 
-The first step in creating this table was to find all current employees within a specific age range. While I do not know what year this data is actually from, the desired birth-dates were between January 1st, 1952 and December 31st, 1955. The marker for current-employees was a *to_date* of 'January 1st, 9999'. I combined the name and employee number data from the **employees.csv** dataset with the position title and position-related start and finish dates frm the **titles.csv** dataset. Since many employees had mutliple tenures in their history, I then filterd all repeating employee numbers by ordering by employee number AND end_date (descending). Then, using **DISTINCT ON (emp_no)**, I selected the first listed row (moost recent end-date) for each grouping of employee positions. Then I filtered the selected values by only allowing finish dates = 01-01-9999 into the new table. This table was saved as **unique_titles.csv** and is shown below:
+#### Deliverable 1: June Analysis
 
-<p align="center">
-  <img width=auto height="500" src=Resources/Images/retire_positions.png>
-  </p>
-  
-- This table simplifies the connection between current employees and their position significantly.
-- This still returns a very long list.
-  
-The final step for fulfilling this deliverable was to create a new table that displayed the number of employees in the retirement age-range for each listed position in the company. I used **COUNT(title)** to get a numerical representaion of each person sharing each unique company title, and I selected title to get the character value of each position. I then grouped the table by the positions' character values to created the following table, saved as **retiring_titles.csv**):
+To create a summary of all historical data collected by all weather stations in previous years, I created a query selecting the **tobs** column of the **Measurement** table (*Measurement.tobs*). I filtered the output to only return temperature data on the same row as data values containing the month of June. I then transformed the resulting extraction to a list, and from this list, a dataframe.
 
 <p align="center">
-  <img width=auto height="500" src=Resources/Images/position_counts.png>
+  <img width=auto height="500" src=images/june_summary.png>
   </p>
   
-- It is evident that a large amount of Senior Engineer and Senior Staff will be lost soon, 
-- Very few management positions will be left empty.
+- 1700 data point were collected in -previous Junes.
+- The June temperature data ranges from 65˚F to 85˚F, has a mean of 75.94˚F, and has a standard deviation of 3.26˚F.
 
 #### Deliverable 2: Eligible Employees for the Mentorship Program
 
-For this task, I combined the employee number, name, and birth-date data from the **employees.csv** dataset, the position-related start and finish dates from the **dept_emp.csv** dataset, and the position titles from the **titles.csv** dataset. I then filtered out all non-employed persons outside of another desired age-range of January 1st, 1965 to Decemeber 31st, 1965 using the **WHERE-AND** operation. I then ordered by employee number to get the following table, saved as **mentorship_eligibility.csv**:
+For this task I repeated the step from D2, only I changed the filter month to December.
 
 <p align="center">
-  <img width=auto height="500" src=Resources/Images/eligile_emp.png>
+  <img width=auto height="500" src=images/dec_summary.png>
   </p>
   
-- This draws clear connections between age, and tenure.
-- The table is still quite long, despite filtering out non-current employees.
-- All columns are helpful in deciding eligilibity.
-- The date format is organized better, but is still a little awkward to interpret.
+- 1517 data points were collected in previous Decembers.
+- The December temperature data ranges from 65˚F to 83˚F, has a mean of 75.94˚F, and has a standard deviation of 3.26˚F.
 
 ### Conclusion
 Based on the table in Deliverable 2, it appears as though a litle over 72,000 positions will need to be filled in the years to come. This is a lot of employees to train, but luckily there are quite a few mentor-eligible employees for most position types. I made the following table to display this:
