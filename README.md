@@ -24,28 +24,26 @@ To create a summary of all historical data collected by all weather stations in 
 - 1700 data point were collected in -previous Junes.
 - The June temperature data ranges from 65˚F to 85˚F, has a mean of 75.94˚F, and has a standard deviation of 3.26˚F.
 
-#### Deliverable 2: Eligible Employees for the Mentorship Program
+#### Deliverable 2: December Analysis
 
-For this task I repeated the step from D2, only I changed the filter month to December.
+For this task I repeated the steps from D2, only I changed the filtering month to December.
 
 <p align="center">
   <img width=auto height="500" src=images/dec_summary.png>
   </p>
   
 - 1517 data points were collected in previous Decembers.
-- The December temperature data ranges from 65˚F to 83˚F, has a mean of 75.94˚F, and has a standard deviation of 3.26˚F.
+- The December temperature data ranges from 56˚F to 83˚F, has a mean of 71.04˚F, and has a standard deviation of 3.75˚F.
 
 ### Conclusion
-Based on the table in Deliverable 2, it appears as though a litle over 72,000 positions will need to be filled in the years to come. This is a lot of employees to train, but luckily there are quite a few mentor-eligible employees for most position types. I made the following table to display this:
+It appears as though June is the better month to open based on temperature data alone. I personally prefer surfing in hotter weather, and I elieve this is the majority-held preference. I also prefer to surf when there is zero chance of being struck by lightning. Assuming that this preference is also held by a majority of surfers and that lightning has a greater chance of striking when it rains, I'll make two other queries that focus on precipitation data for these months to see if the choice in opening month is still obvious.
 
 <p align="center">
-  <img width=auto height="500" src=Resources/Images/mentor_counts.png>
+  <img width=auto height="500" src=images/June_prcp_summary.png>
   </p>
-  
-So now we know just how many potential mentors exist in each area of the company, and since it's pretty easy to see that these numbers don't add up to 72,000 we'll need another table to better visualize the vacancy-mentor disparity. I went ahead and made one using the previous table and the **retiring_titles** table from Deliverable 2:
 
 <p align="center">
-  <img width=auto height="500" src=Resources/Images/ratio.png>
+  <img width=auto height="500" src=images/Dec_prcp_summary.png>
   </p>
-  
-Now we're talking. Not only do we now see that there are zero potential mentors for mangement positions, we can easily see which positions will provide the largest mentor pools for new employees based on the position-mentor ratio. It's not looking good for the senior engineer mentors. This may push hiring managers to temporarily seek engineers with more experience than what has been required in the past. Fortunately, there will only two management vacancies to fill!
+
+It seems as though rain is not a major inhibitor in either month. Hawaii experienced less total rain in previous June than Decemeber months. However, hurricane season in Hawaii falls between the months of June to November. This small piece of information renders this entire analysis slightly pointless because a surf shop's opening day should probably be at the start of a season without hurricanes, though we still managed to use SQLite and SQLalchemy to process a database without the need for the PostgreSQL interface! :)
